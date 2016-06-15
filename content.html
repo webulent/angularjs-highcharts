@@ -1,0 +1,168 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="{{show_chart1 ? 'disabled' : 'activem'}}">
+                <a href="#" ng-click="closeChart('show_chart1', true);">
+                    <i class="fa fa-pie-chart" aria-hidden="true"></i> Sales Total per Sales Man
+                </a>
+            </li>
+            <li role="presentation" class="{{show_chart2 ? 'disabled' : 'activem'}}">
+                <a href="#" ng-click="closeChart('show_chart2', true);">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i> Sales Total per month
+                </a>
+            </li>
+            <li role="presentation" class="{{show_chart3 ? 'disabled' : 'activem'}}">
+                <a href="#" ng-click="closeChart('show_chart3', true);">
+                    <i class="fa fa-list" aria-hidden="true"></i> Top 5 Sales Order
+                </a>
+            </li>
+            <li role="presentation" class="{{show_chart4 ? 'disabled' : 'activem'}}">
+                <a href="#"  ng-click="closeChart('show_chart4', true);">
+                    <i class="fa fa-list" aria-hidden="true"></i> Top 5 Sales Men
+                </a>
+            </li>
+        </ul>
+        <hr/>
+    </div>
+
+</div>
+<div class="row" id="sortable">
+
+    <div class="chart-content ui-widget-content ui-state-default" ng-controller="salesManDataController" id="chart1" ng-show="show_chart1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{chart_title}}</h3>
+                <ul>
+                    <li>
+                        <a href="#" ng-click="closeChart('show_chart1', false);">
+                            <i class="fa fa-close" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" ng-click="getData();">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <highchart config="salesManDatachartConfig"></highchart>
+            </div>
+        </div>
+        <div class="clearfix visible-xs-block"></div>
+    </div>
+
+    <div class="chart-content ui-widget-content ui-state-default" ng-controller="lastYearDataController" id="chart2" ng-show="show_chart2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{chart_title}}</h3>
+                <ul>
+                    <li>
+                        <a href="#" ng-click="closeChart('show_chart2', false);">
+                            <i class="fa fa-close" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" ng-click="getData();">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <highchart config="lastYearDatachartConfig"></highchart>
+            </div>
+        </div>
+        <div class="clearfix visible-xs-block"></div>
+    </div>
+
+    <div class="chart-content ui-widget-content ui-state-default" ng-controller="topSalesOrdersController" id="chart3" ng-show="show_chart3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{chart_title}}</h3>
+                <ul>
+                    <li>
+                        <a href="#" ng-click="closeChart('show_chart3', false);">
+                            <i class="fa fa-close" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" ng-click="getData();">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div style="background:white; padding:4px;">
+                    <h4 class="text-center">{{chart_title}}</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Order No</th>
+                            <th>Username</th>
+                            <th>Qty</th>
+                            <th>Sales</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="sales in salesData">
+                            <th scope=row>{{$index+1}}</th>
+                            <td>{{sales.orderNum}}</td>
+                            <td>{{sales.userName}}</td>
+                            <td>{{sales.qty}}</td>
+                            <td>{{sales.value}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix visible-xs-block"></div>
+    </div>
+
+    <div class="chart-content ui-widget-content ui-state-default" ng-controller="topSalesMenController" id="chart4" ng-show="show_chart4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{chart_title}}</h3>
+                <ul>
+                    <li>
+                        <a href="#" ng-click="closeChart('show_chart4', false);">
+                            <i class="fa fa-close" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" ng-click="getData();">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div style="background:white; padding:4px;">
+                    <h4 class="text-center">{{chart_title}}</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Username</th>
+                            <th>Sales</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="sales in salesData">
+                            <th scope=row>{{$index+1}}</th>
+                            <td>{{sales[0]}}</td>
+                            <td>{{sales[1]}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix visible-xs-block"></div>
+    </div>
+
+</div><!-- /.row -->

@@ -1,0 +1,38 @@
+What we use:
+    - Angularjs,
+    - Twitter Bootstrap,
+    - FontAwesome,
+    - jQuery,
+    - jQueryUI
+    - HighCharts
+
+Structure:
+    - css
+        - bootstrap.min.css
+        - bootsrap-theme.css
+        - custom.css
+        - font-awesome.min.css
+
+    - fonts
+        + FontAwesome fonts...
+        + glyphicons fonts...
+
+    - jquery-ui
+        + images
+        - jquery-ui.css
+        - jquery-ui.js
+        - jquery-ui.min.css
+
+    - js
+        + angular
+        + jquery
+        - bootstrap.min.js
+        - custom.js
+        - highcharts-ng.js
+        - npm.js
+        - app
+            - app.js
+            - footer_directive.js
+            - header_directive.js
+
+
